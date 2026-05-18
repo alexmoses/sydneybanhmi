@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s | Sydney Banh Mi",
   },
   description:
-    "Independently ranked banh mi shops across Sydney. Based on the Food Inbox Top 10 Banh Mi Sydney 2026. Compare taste, value, authenticity, and service scores.",
+    "Independently researched and ranked banh mi shops across Sydney. Compare taste, value, authenticity, and service scores to find Sydney's best Vietnamese rolls.",
   keywords: [
     "banh mi sydney",
     "best banh mi sydney",
@@ -40,11 +40,7 @@ export default function RootLayout({
             <div>
               <div className="font-semibold text-white">Sydney Banh Mi</div>
               <p className="mt-1 max-w-2xl text-stone-400">
-                Independent banh mi rankings for Sydney food lovers. Rankings based on the{" "}
-                <a href="https://www.foodinbox.com.au/blog/top-10-banh-mi-sydney-2026" className="text-amber-400 hover:underline" target="_blank" rel="noopener noreferrer">
-                  Food Inbox Top 10 Banh Mi Sydney 2026
-                </a>
-                . No placement is for sale.
+                Independent banh mi rankings for Sydney food lovers. Research methodology: taste, value, authenticity, and service scores across 4+ review sources. No placement is for sale.
               </p>
             </div>
             <div className="text-stone-400">

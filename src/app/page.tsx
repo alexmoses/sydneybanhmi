@@ -19,11 +19,7 @@ export default function HomePage() {
               Sydney's Best Banh Mi
             </h1>
             <p className="mt-4 max-w-2xl text-lg text-stone-600">
-              Independently ranked. Based on the{" "}
-              <a href="https://www.foodinbox.com.au/blog/top-10-banh-mi-sydney-2026" className="font-semibold text-amber-600 hover:underline" target="_blank" rel="noopener noreferrer">
-                Food Inbox Top 10 Banh Mi Sydney 2026
-              </a>
-              .
+              Independently researched and ranked. Aggregated from 4+ trusted review sources.
             </p>
             <div className="mt-8 w-full max-w-md">
               <Link href="/search" className="flex items-center gap-3 rounded-full border border-stone-300 bg-white px-4 py-3 text-stone-500 shadow-sm transition hover:border-amber-400 hover:text-stone-700">
@@ -42,7 +38,6 @@ export default function HomePage() {
             <h2 className="text-2xl font-bold text-stone-900">The Top 10</h2>
             <p className="mt-1 text-sm text-stone-500">Ranked by overall score out of 10</p>
           </div>
-          <Link href="/methodology" className="text-sm font-medium text-amber-600 hover:text-amber-700">How we rank →</Link>
         </div>
         <div className="flex flex-col gap-4">
           {topShops.map((shop, i) => (

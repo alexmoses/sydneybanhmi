@@ -48,28 +48,11 @@ export function ShopCard({ shop, rank }: ShopCardProps) {
               className="flex items-center gap-1 text-xs text-stone-400 hover:text-stone-600"
             >
               <ExternalLink className="h-3 w-3" />
-              Food Inbox
+              Source
             </a>
           )}
         </div>
       </div>
     </div>
   );
-}
-
-function getSuburbSlug(suburbId: string): string {
-  // We'll import from data later — for now simple mapping
-  const map: Record<string, string> = {
-    "suburb-ryde": "ryde",
-    "suburb-bankstown": "bankstown",
-    "suburb-marrickville": "marrickville",
-    "suburb-parramatta": "parramatta",
-    "suburb-annandale": "annandale",
-    "suburb-kearns": "kearns",
-    "suburb-mascot": "mascot",
-    "suburb-eastwood": "eastwood",
-    "suburb-cabramatta": "cabramatta",
-    "suburb-enmore": "enmore",
-  };
-  return map[suburbId] || "";
 }

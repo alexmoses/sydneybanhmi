@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 48" width="32" height="48">
+  <ellipse cx="16" cy="44" rx="10" ry="3" fill="rgba(0,0,0,0.2)"/>
+  <path d="M16 0C7.2 0 0 7.2 0 16c0 11.8 16 32 16 32s16-20.2 16-32c0-8.8-7.2-16-16-16z" fill="#b45309"/>
+  <path d="M16 2C8.3 2 2 8.3 2 16c0 10.5 14 28.5 14 28.5s14-18 14-28.5C30 8.3 23.7 2 16 2z" fill="#f59e0b"/>
+  <circle cx="16" cy="15" r="9" fill="white"/>
+  <!-- Bread/baguette icon in center -->
+  <path d="M11 12c0-1.1.9-2 2-2h6c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2h-6c-1.1 0-2-.9-2-2v-6z" fill="#d97706"/>
+  <path d="M12 13h8M12 15h8M12 17h8" stroke="white" stroke-width=".8" stroke-linecap="round"/>
+</svg>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, MapPin, Search } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 
 export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -17,25 +17,12 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
-          <Link href="/suburbs" className="text-sm font-medium text-stone-600 hover:text-stone-900">
-            Suburbs
-          </Link>
-          <Link href="/map" className="text-sm font-medium text-stone-600 hover:text-stone-900">
-            Map
-          </Link>
-          <Link href="/methodology" className="text-sm font-medium text-stone-600 hover:text-stone-900">
-            Methodology
-          </Link>
-          <Link href="/search" className="rounded-full bg-amber-500 p-2 text-white hover:bg-amber-600">
-            <Search className="h-4 w-4" />
-          </Link>
+          <Link href="/suburbs" className="text-sm font-medium text-stone-600 hover:text-stone-900">Suburbs</Link>
+          <Link href="/map" className="text-sm font-medium text-stone-600 hover:text-stone-900">Map</Link>
+          <Link href="/search" className="rounded-full bg-amber-500 p-2 text-white hover:bg-amber-600"><Search className="h-4 w-4" /></Link>
         </nav>
 
-        <button
-          className="rounded-md p-2 text-stone-600 hover:bg-stone-100 md:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
+        <button className="rounded-md p-2 text-stone-600 hover:bg-stone-100 md:hidden" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
@@ -45,7 +32,6 @@ export function SiteHeader() {
           <nav className="flex flex-col gap-3">
             <Link href="/suburbs" className="text-base font-medium text-stone-600" onClick={() => setMobileOpen(false)}>Suburbs</Link>
             <Link href="/map" className="text-base font-medium text-stone-600" onClick={() => setMobileOpen(false)}>Map</Link>
-            <Link href="/methodology" className="text-base font-medium text-stone-600" onClick={() => setMobileOpen(false)}>Methodology</Link>
             <Link href="/search" className="text-base font-medium text-stone-600" onClick={() => setMobileOpen(false)}>Search</Link>
           </nav>
         </div>

@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "ProteinRanked - Australia's Protein Rankings";
+export const alt = "Sydney Banh Mi Ranked — Find the Best Banh Mi in Sydney";
 export const size = { width: 1200, height: 630 };
 
 export default function OGImage() {
@@ -14,37 +14,30 @@ export default function OGImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#f8fafc",
+          backgroundColor: "#FFFBEB",
           padding: 60,
         }}
       >
-        <div
-          style={{
-            fontSize: 80,
-            marginBottom: 20,
-          }}
-        >
-          PR
-        </div>
+        <div style={{ fontSize: 100, marginBottom: 20 }}>🥖</div>
         <div
           style={{
             fontSize: 60,
             fontWeight: "bold",
-            color: "#020617",
+            color: "#292524",
             textAlign: "center",
           }}
         >
-          ProteinRanked
+          Sydney Banh Mi
         </div>
         <div
           style={{
             fontSize: 30,
-            color: "#4b5563",
+            color: "#78716c",
             marginTop: 20,
             textAlign: "center",
           }}
         >
-          Australia&apos;s Protein Rankings
+          Independently Ranked — Research: taste, value, authenticity, service
         </div>
       </div>
     ),

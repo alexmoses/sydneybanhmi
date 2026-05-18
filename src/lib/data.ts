@@ -1,6 +1,23 @@
 import { suburbs } from "../data/suburbs";
 import { shops } from "../data/shops";
-import { Shop, ShopWithScores, Suburb } from "../types";
+import { Review, Shop, ShopWithScores, Suburb } from "../types";
+
+/**
+ * Source credibility weights:
+ * - Verified primary (Food Inbox verified): 2.0x
+ * - Premium publications (Broadsheet, TimeOut, SMH): 1.5x
+ * - Aggregated platforms (Google, Yelp): 1.0x
+ * - Individual blogs / unverified: 0.7x
+ */
+function getSourceWeight(review: Review): number {
+  const premiumSources = ["Broadsheet", "TimeOut Sydney", "Sydney Morning Herald", "Good Food Guide", "Gourmet Traveller"];
+  const platformSources = ["Google Reviews", "Yelp", "TripAdvisor"];
+  
+  if (review.isVerified && review.sourceName === "Food Inbox") return 2.0;
+  if (premiumSources.includes(review.sourceName || "")) return 1.5;
+  if (platformSources.includes(review.sourceName || "")) return 1.0;
+  return 0.7;
+}
 
 function computeScores(shop: Shop): ShopWithScores {
   const reviews = shop.reviews;
@@ -8,11 +25,20 @@ function computeScores(shop: Shop): ShopWithScores {
   if (count === 0) {
     return { ...shop, overallScore: 0, tasteScore: 0, valueScore: 0, authenticityScore: 0, serviceScore: 0, reviewCount: 0 };
   }
-  const taste = reviews.reduce((s, r) => s + r.tasteRating, 0) / count;
-  const value = reviews.reduce((s, r) => s + r.valueRating, 0) / count;
-  const authenticity = reviews.reduce((s, r) => s + r.authenticityRating, 0) / count;
-  const service = reviews.reduce((s, r) => s + r.serviceRating, 0) / count;
-  const overall = taste * 0.35 + value * 0.25 + authenticity * 0.25 + service * 0.15;
+
+  const weights = reviews.map(getSourceWeight);
+  const totalWeight = weights.reduce((s, w) => s + w, 0);
+
+  // OVERALL SCORE: weighted average of overallRating from all sources
+  // This directly reflects what reviewers think — a 9/10 review contributes ~9 to the score
+  const overall = reviews.reduce((s, r, i) => s + r.overallRating * weights[i], 0) / totalWeight;
+
+  // SUB-RATINGS: weighted averages for detail pages
+  const taste = reviews.reduce((s, r, i) => s + r.tasteRating * weights[i], 0) / totalWeight;
+  const value = reviews.reduce((s, r, i) => s + r.valueRating * weights[i], 0) / totalWeight;
+  const authenticity = reviews.reduce((s, r, i) => s + r.authenticityRating * weights[i], 0) / totalWeight;
+  const service = reviews.reduce((s, r, i) => s + r.serviceRating * weights[i], 0) / totalWeight;
+
   return {
     ...shop,
     tasteScore: Math.round(taste * 10) / 10,
@@ -60,6 +86,6 @@ export function getAllShops(): ShopWithScores[] {
 export function searchShops(query: string): ShopWithScores[] {
   const q = query.toLowerCase();
   return shops
-    .filter((s) => s.name.toLowerCase().includes(q) || getSuburbBySlug(s.suburbId)?.name.toLowerCase().includes(q))
+    .filter((s) => s.name.toLowerCase().includes(q) || getSuburbById(s.suburbId)?.name.toLowerCase().includes(q))
     .map(computeScores);
 }
