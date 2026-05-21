@@ -69,8 +69,19 @@ export default function RootLayout({
                 Independent banh mi rankings for Sydney food lovers. Research methodology: taste, value, authenticity, and service scores across 4+ review sources. No placement is for sale.
               </p>
             </div>
-            <div className="text-stone-400">
-              © {new Date().getFullYear()} Sydney Banh Mi. Rankings updated annually.
+            <div className="flex flex-col gap-1 text-stone-400 sm:text-right">
+              <div>© {new Date().getFullYear()} Sydney Banh Mi. Rankings updated annually.</div>
+              <div>
+                Powered By{" "}
+                <a
+                  href="https://www.makaroni.com.au/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-amber-400 hover:text-amber-300 hover:underline"
+                >
+                  Makaroni
+                </a>
+              </div>
             </div>
           </div>
         </footer>
