@@ -18,10 +18,36 @@ export const metadata: Metadata = {
     "sydney banh mi rankings",
     "top banh mi sydney",
   ],
+  authors: [{ name: "Sydney Banh Mi" }],
+  creator: "Sydney Banh Mi",
+  publisher: "Sydney Banh Mi",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_AU",
     siteName: "Sydney Banh Mi",
+    url: "https://sydneybanhmi.com.au",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@sydneybanhmi",
+    creator: "@sydneybanhmi",
+  },
+  other: {
+    "geo.region": "AU-NSW",
+    "geo.placename": "Sydney",
   },
 };
 

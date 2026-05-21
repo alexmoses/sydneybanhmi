@@ -1,7 +1,32 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getTopShops, getNotableMentions, getSuburbs } from "../lib/data";
 import { ShopCard } from "../components/shop/ShopCard";
 import { Search } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Sydney's Best Banh Mi — Rankings & Reviews 2026",
+  description:
+    "The definitive guide to Sydney's best banh mi. Top 10 ranked with independent scores across taste, value, authenticity & service. Find Vietnamese rolls in Marrickville, Bankstown, Ryde & more.",
+  keywords: [
+    "best banh mi sydney",
+    "sydney banh mi rankings",
+    "top banh mi sydney 2026",
+    "vietnamese roll sydney",
+    "banh mi Marrickville",
+    "banh mi Bankstown",
+    "banh mi Ryde",
+  ],
+  alternates: {
+    canonical: "https://sydneybanhmi.com.au",
+  },
+  openGraph: {
+    url: "https://sydneybanhmi.com.au",
+    title: "Sydney's Best Banh Mi — Rankings & Reviews 2026",
+    description:
+      "The definitive guide to Sydney's best banh mi. Top 10 ranked with independent scores across taste, value, authenticity & service.",
+  },
+};
 
 export default function HomePage() {
   const topShops = getTopShops(10);

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllShops, getSuburbById } from "@/lib/data";
 import { ScoreBadge } from "@/components/shop/ScoreBadge";
@@ -16,11 +17,31 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: any) {
+export async function generateMetadata({ params }: any): Promise<Metadata> {
   const { shopSlug } = await params;
   const shop = getAllShops().find((s) => s.slug === shopSlug);
+  const suburb = shop ? getSuburbById(shop.suburbId) : null;
+  if (!shop) return { title: "Shop Not Found" };
+
   return {
-    title: shop ? `${shop.name} Review` : "Shop",
+    title: `${shop.name} — Banh Mi Review & Score (${suburb?.name || "Sydney"})`,
+    description: `${shop.name} in ${suburb?.name || "Sydney"}: rated ${shop.overallScore}/10 for banh mi. See full score breakdown for taste, value, authenticity & service. Menu, hours & reviews included.`,
+    keywords: [
+      `${shop.name} banh mi`,
+      `${shop.name} review`,
+      `banh mi ${suburb?.name || "sydney"}`,
+      `best banh mi ${suburb?.name || "sydney"}`,
+      "sydney banh mi",
+    ],
+    alternates: {
+      canonical: `https://sydneybanhmi.com.au/suburbs/${suburb?.slug || ""}/${shop.slug}`,
+    },
+    openGraph: {
+      url: `https://sydneybanhmi.com.au/suburbs/${suburb?.slug || ""}/${shop.slug}`,
+      title: `${shop.name} — Banh Mi Review & Score`,
+      description: `${shop.name} in ${suburb?.name || "Sydney"}: rated ${shop.overallScore}/10 for banh mi. See full score breakdown.`,
+      locale: "en_AU",
+    },
   };
 }
 
@@ -65,12 +86,35 @@ export default async function ShopPage({ params }: any) {
   return (
     <>
       <JsonLd data={structuredData} />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://sydneybanhmi.com.au" },
+            { "@type": "ListItem", position: 2, name: "Suburbs", item: "https://sydneybanhmi.com.au/suburbs" },
+            { "@type": "ListItem", position: 3, name: suburb?.name || "", item: `https://sydneybanhmi.com.au/suburbs/${suburb?.slug || ""}` },
+            { "@type": "ListItem", position: 4, name: shop.name },
+          ],
+        })}
+      </script>
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <nav className="mb-4 text-sm text-stone-500">
-          <Link href="/" className="hover:text-stone-700">Home</Link> {" / "}
-          <Link href="/suburbs" className="hover:text-stone-700">Suburbs</Link> {" / "}
-          <Link href={`/suburbs/${suburb?.slug}`} className="hover:text-stone-700">{suburb?.name}</Link> {" / "}
-          <span className="text-stone-900">{shop.name}</span>
+        <nav aria-label="Breadcrumb" className="mb-4 text-sm text-stone-500">
+          <ol className="flex flex-wrap items-center gap-1">
+            <li>
+              <Link href="/" className="hover:text-stone-700 hover:underline">Home</Link>
+            </li>
+            <li className="text-stone-400">/</li>
+            <li>
+              <Link href="/suburbs" className="hover:text-stone-700 hover:underline">Suburbs</Link>
+            </li>
+            <li className="text-stone-400">/</li>
+            <li>
+              <Link href={`/suburbs/${suburb?.slug}`} className="hover:text-stone-700 hover:underline">{suburb?.name}</Link>
+            </li>
+            <li className="text-stone-400">/</li>
+            <li className="text-stone-900" aria-current="page">{shop.name}</li>
+          </ol>
         </nav>
 
         <div className="flex flex-col gap-6 lg:flex-row">

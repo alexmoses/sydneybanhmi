@@ -1,8 +1,19 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getSuburbs } from "../../lib/data";
 
-export const metadata = {
-  title: "All Suburbs",
+export const metadata: Metadata = {
+  title: "Best Banh Mi by Sydney Suburb — Find Top Shops Near You",
+  description:
+    "Browse Sydney's best banh mi shops by suburb. From Marrickville to Bankstown, Ryde to Parramatta — find the top-rated Vietnamese rolls in your area.",
+  alternates: {
+    canonical: "https://sydneybanhmi.com.au/suburbs",
+  },
+  openGraph: {
+    url: "https://sydneybanhmi.com.au/suburbs",
+    title: "Best Banh Mi by Sydney Suburb",
+    description: "Browse Sydney's best banh mi shops by suburb — find top Vietnamese rolls near you.",
+  },
 };
 
 export default function SuburbsPage() {
