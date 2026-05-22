@@ -56,6 +56,36 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Editorial trust intro */}
+      <section className="bg-amber-50">
+        <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
+          <div className="rounded-2xl border border-amber-200 bg-white p-6 shadow-sm">
+            <h2 className="text-lg font-bold text-stone-900">How we rank Sydney's best banh mi</h2>
+            <p className="mt-3 text-sm leading-relaxed text-stone-600">
+              These rankings are compiled from real reviews across{" "}
+              <strong className="text-stone-800">Broadsheet</strong>,{" "}
+              <strong className="text-stone-800">Time Out Sydney</strong>,{" "}
+              <strong className="text-stone-800">Good Food Guide</strong>,{" "}
+              <strong className="text-stone-800">Google</strong>, and{" "}
+              <strong className="text-stone-800">Yelp</strong>. Each shop is
+              scored across four criteria — taste, value, authenticity, and service — using a
+              weighted formula that prioritises verified food-critic reviews over crowd
+              aggregators. Every shop listed is a real Sydney business you can visit today.{" "}
+              <Link href="/methodology" className="font-medium text-amber-700 hover:text-amber-800 hover:underline">
+                See full methodology →
+              </Link>
+            </p>
+            <p className="mt-2 text-xs text-stone-400">
+              Research by{" "}
+              <a href="https://makaroni.com.au" target="_blank" rel="noopener noreferrer" className="text-stone-500 hover:text-amber-700 hover:underline">
+                Alex Moses
+              </a>
+              , Makaroni Pty Ltd. Last updated January 2026.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Top 10 */}
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-end justify-between">

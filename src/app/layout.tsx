@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     "sydney banh mi rankings",
     "top banh mi sydney",
   ],
-  authors: [{ name: "Sydney Banh Mi" }],
-  creator: "Sydney Banh Mi",
-  publisher: "Sydney Banh Mi",
+  authors: [{ name: "Alex Moses", url: "https://makaroni.com.au" }],
+  creator: "Alex Moses",
+  publisher: "Makaroni Pty Ltd",
   alternates: {
     canonical: "/",
   },
@@ -48,6 +48,8 @@ export const metadata: Metadata = {
   other: {
     "geo.region": "AU-NSW",
     "geo.placename": "Sydney",
+    "geo.position": "-33.8688;151.2093",
+    "ICBM": "-33.8688, 151.2093",
   },
 };
 
@@ -58,6 +60,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-AU">
+      <head>
+        <meta name="theme-color" content="#f59e0b" />
+        <meta name="apple-mobile-web-app-title" content="Sydney Banh Mi" />
+      </head>
       <body className="flex min-h-screen flex-col font-sans antialiased bg-amber-50">
         <SiteHeader />
         <main className="flex-1">{children}</main>
@@ -80,6 +86,17 @@ export default function RootLayout({
                   className="font-semibold text-amber-400 hover:text-amber-300 hover:underline"
                 >
                   Makaroni
+                </a>
+              </div>
+              <div className="text-xs text-stone-500">
+                Research by{" "}
+                <a
+                  href="https://makaroni.com.au"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-stone-400 hover:text-amber-300 hover:underline"
+                >
+                  Alex Moses
                 </a>
               </div>
             </div>
